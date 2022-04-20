@@ -64,28 +64,27 @@ void Player::Update(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* camera)
 		position = { 0,20,0 };
 		vy = 0;
 		vx = 0;
+		time = 0;
 		break;
 
 	case State::Move_X:
-		vx += xmove;
+		time++;
+		position.x += -1*grav * time * time / 2;
 		if (position.x >100) {
 			Fallflag = State::None;
 		}
 		break;
 
 	case State::Move_Y:
-		vy += grav;
+		time++;
+		position.y += grav * time * time/2;
 		if (position.y < -100) {
 			Fallflag = State::None;
 		}
 		break;
 	}
-
-	position.x += vx * 2.5f;
-	position.y += vy * 2.5f;
 	// s—ñ‚ÌXV‚È‚Ç
 	Object3d::Update({ 1,1,1,1 }, dxcomn, camera);
-
 }
 
 

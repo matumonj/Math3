@@ -32,8 +32,9 @@ private:
 	};
 	State Fallflag;
 	float vy = 0.0f,vx=0.0f;
-	const float grav = -0.5f / 60.0f;
-	const float xmove=0.5f / 60.0f;
+	const float grav = -0.1f / 60.0f;
+	int time = 0;
+	const float xmove=0.1f / 60.0f;
 public:
 	State GetState() { return Fallflag; }
 	void SetFall_Y(bool flag) { Fallflag = State::Move_Y; }
